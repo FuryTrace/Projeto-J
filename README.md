@@ -11,9 +11,9 @@ Para executar este código siga os seguintes passos:
 ```
 git clone https://github.com/FuryTrace/Projeto-J.git 
 ```
-3. Mude para dentro da pasta criada `api-crud-js`:
+3. Mude para dentro da pasta criada `Projeto-J`:
 ```
-cd api-crud-js
+cd Projeto-J
 ```
 4. Nessa pasta digite o comando abaixo (vai instalar os pacotes listados nas dependências):
 ```
