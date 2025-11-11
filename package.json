@@ -1,22 +1,14 @@
 {
   "name": "projeto-j",
   "version": "1.0.0",
-  "description": "Projeto de Linguagem de Programação para Web I",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FuryTrace/Projeto-J.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FuryTrace/Projeto-J/issues"
-  },
-  "homepage": "https://github.com/FuryTrace/Projeto-J#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
