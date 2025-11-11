@@ -1,10 +1,28 @@
 body{font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;margin:0;padding:20px}
 .container{max-width:700px;margin:20px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 h1{margin-top:0}
+/* formulário */
 #form-adicionar{display:flex;gap:8px;margin-bottom:16px}
-#form-adicionar input{flex:1;padding:8px}
-#form-adicionar button{padding:8px 12px}
+#form-adicionar input{flex:1;padding:8px;border:1px solid #ddd;border-radius:4px}
+#form-adicionar button{padding:8px 12px;border-radius:4px}
+
+/* lista */
 ul#lista{list-style:none;padding:0;margin:0}
-ul#lista li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #eee}
+ul#lista li{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #eee}
+
+.info{flex:1;min-width:0} /* permite que o conteúdo quebre corretamente */
+.info strong{display:block}
+.descricao{margin-top:6px;color:#333}
+
+.meta{display:flex;gap:6px;align-items:center;color:#666;font-size:0.9rem}
+.meta-date{color:#444}
+.meta-sep{color:#ccc;margin:0 4px}
+.meta-concluded{color:#2a7f2a}
+
+/* ações (select e botões) */
+/* container de ações alinhado à direita */
+.actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+.actions select{padding:6px;border-radius:4px;border:1px solid #ddd}
+.actions button{cursor:pointer;padding:6px 8px;border-radius:4px}
+
 span.concluida{text-decoration:line-through;color:#888}
-button{cursor:pointer}

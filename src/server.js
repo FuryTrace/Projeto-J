@@ -19,9 +19,8 @@ function createApp() {
 	app.use('/tarefas', tarefasRoutes);
 
 	// Rota raiz que envia o index.html (opcional, já coberto pelo static)
-	app.get('/', (req, res) => {
-		res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
-	});
+	// Nota: não é necessário definir explicitamente a rota '/' aqui,
+	// pois `express.static` já serve `public/index.html` na raiz.
 
 	return app;
 }

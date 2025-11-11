@@ -6,6 +6,13 @@ function todayDate() {
   return d.toISOString().slice(0, 10);
 }
 
+// Helper centralizado para tratar erros nos controllers
+function handleError(res, err, message = 'Erro interno', code = 500) {
+  // Loga o erro no servidor (detalhes) e responde com mensagem amigável
+  console.error(err);
+  res.status(code).json({ erro: message });
+}
+
 // LISTAR: retorna array de tarefas
 // Consulta realizada: SELECT id,nome,descricao,data_criacao,data_conclusao,status FROM tarefas ORDER BY id
 exports.listar = async (req, res) => {
@@ -16,8 +23,7 @@ exports.listar = async (req, res) => {
     // Resposta JSON enviada para o frontend (public/js/app.js espera estes campos)
     res.json(tarefas);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ erro: 'Erro ao listar tarefas' });
+    handleError(res, err, 'Erro ao listar tarefas');
   }
 };
 
@@ -29,8 +35,7 @@ exports.obter = async (req, res) => {
     if (!tarefa) return res.status(404).json({ erro: 'Tarefa não encontrada' });
     res.json(tarefa);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ erro: 'Erro ao buscar tarefa' });
+    handleError(res, err, 'Erro ao buscar tarefa');
   }
 };
 
@@ -51,8 +56,7 @@ exports.inserir = async (req, res) => {
     // Retornamos o id criado (frontend e testes usam isso)
     res.status(201).json({ id, mensagem: 'Tarefa inserida com sucesso' });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ erro: 'Erro ao inserir tarefa' });
+    handleError(res, err, 'Erro ao inserir tarefa');
   }
 };
 
@@ -88,8 +92,7 @@ exports.atualizar = async (req, res) => {
     await db('tarefas').where({ id }).update(updateData);
     res.json({ mensagem: 'Tarefa atualizada com sucesso' });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ erro: 'Erro ao atualizar tarefa' });
+    handleError(res, err, 'Erro ao atualizar tarefa');
   }
 };
 
@@ -100,7 +103,6 @@ exports.excluir = async (req, res) => {
     await db('tarefas').where({ id }).del();
     res.json({ mensagem: 'Tarefa excluída com sucesso' });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ erro: 'Erro ao excluir tarefa' });
+    handleError(res, err, 'Erro ao excluir tarefa');
   }
 };

@@ -48,6 +48,11 @@ npm start
 
 Abra no navegador: http://localhost:3000
 
+Formato de datas
+- O frontend agora exibe apenas a data no formato `DD/MM/AAAA` (por exemplo: `24/11/2025`).
+- A hora foi removida da exibição porque podia aparecer como `00:00` dependendo do fuso/armazenamento; se preferir exibir hora também, posso reativar isso.
+- A data é formatada no navegador (fuso horário do cliente). Se preferir consistência entre clientes, podemos formatar no servidor.
+
 Modo desenvolvimento (reload automático)
 - Já existe um script `dev` no `package.json` usando `nodemon`. Para iniciar com reload automático:
 
