@@ -10,8 +10,11 @@
   <div class="container">
     <h1>Lista de Tarefas</h1>
 
+    <!-- Formulário para criar tarefa. O backend exige 'nome' não-nulo. -->
     <form id="form-adicionar">
-      <input id="nome" placeholder="Nome (opcional)" autocomplete="off">
+      <!-- 'nome' aparece na tabela como campo obrigatório -->
+      <input id="nome" placeholder="Nome (obrigatório)" autocomplete="off">
+      <!-- 'descricao' é opcional -->
       <input id="descricao" placeholder="Descrição da tarefa" autocomplete="off">
       <button type="submit">Adicionar</button>
     </form>

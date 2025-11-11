@@ -32,11 +32,13 @@ function request(options, body) {
 
   console.log('Servidor de teste rodando na porta', port);
 
-  // 1 - listar
+  // 1 - listar todas as tarefas (GET /tarefas)
+  // espera array de objetos: { id, nome, descricao, data_criacao, data_conclusao, status }
   const list1 = await request({ hostname: '127.0.0.1', port, path: '/tarefas', method: 'GET' });
   console.log('\n[GET] /tarefas ->', list1.status, JSON.stringify(list1.body));
 
-  // 2 - criar
+  // 2 - criar (POST /tarefas)
+  // envia { nome: string, descricao?: string } e espera { id, mensagem }
   const create = await request({ hostname: '127.0.0.1', port, path: '/tarefas', method: 'POST' }, { nome: 'Teste', descricao: 'Tarefa de integração' });
   console.log('\n[POST] /tarefas ->', create.status, JSON.stringify(create.body));
   const id = create.body && create.body.id;
@@ -46,7 +48,8 @@ function request(options, body) {
   console.log('\n[GET] /tarefas (depois) ->', list2.status, JSON.stringify(list2.body));
 
   if (id) {
-    // 4 - atualizar (marcar como concluida)
+    // 4 - atualizar (PUT /tarefas/:id)
+    // envia { status: 'concluida' } e espera mensagem de sucesso
   const upd = await request({ hostname: '127.0.0.1', port, path: `/tarefas/${id}`, method: 'PUT' }, { status: 'concluida' });
     console.log(`\n[PUT] /tarefas/${id} ->`, upd.status, JSON.stringify(upd.body));
 

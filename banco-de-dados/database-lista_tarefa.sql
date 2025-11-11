@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS `tarefas` (
 --
 
 INSERT INTO `tarefas` ( `nome`, `descricao`, `data_criacao`, `data_conclusao`, `status`) VALUES
-('Maria Alves', 'Descrição da tarefa 1', '2020-01-01', '2020-01-02', 'concluida'),
-('Joao Paulo', 'Descrição da tarefa 2', '2025-04-11', NULL, 'em andamento'),
-('Joana Silveira', 'Descrição da tarefa 3', '2025-07-11', NULL, 'em andamento'),
-('Ana Clara', 'Descrição da tarefa 4', '2025-04-11', NULL, 'pendente');
+('Maria Alves', 'Comprar carne', '2020-01-01', '2020-01-02', 'concluida'),
+('Joao Paulo', 'Limpar casa', '2025-04-11', NULL, 'em andamento'),
+('Joana Silveira', 'Chorar no banheiro', '2025-07-11', NULL, 'em andamento'),
+('Ana Maria Braga', 'Fazer Almoço', '2025-04-11', NULL, 'pendente');
 COMMIT;

@@ -11,7 +11,7 @@ Passos essenciais para rodar (PowerShell)
 1) Abra o terminal na pasta do projeto:
 
 ```powershell
-cd "c:\Users\William Cesar\Desktop\Senac\1. Materias\3 Linguagem de Programação para Web I\Projeto\Projeto-J"
+cd Projeto-J
 ```
 
 2) Instale dependências:
