@@ -1,0 +1,41 @@
+--- Atividade do professor: ---
+
+Esta atividade poderá ser feita em grupo de, no máximo, 4 alunos(as).
+
+Clique na tarefa para ver arquivo com sugestões de projetos.
+
+Codificar uma aplicação utilizando javascript com o backend implantado com node e módulos dotenv, express, knex e mysql2 (pode usar outros módulos, se for necessário). Escrever o frontend com HTML, javascript e, opcionalmente, CSS.
+
+O backend deve disponibilizar uma API REST para efetuar o CRUD de uma tabela.
+
+O frontend deve consumir essa API para realizar as operações de inclusão, consulta, alteração e exclusão. 
+
+O tema é livre, desde que utilize pelo menos uma tabela no banco de dados MySQL. Pode ser uma agenda de contatos, gerenciamento de uma lista de tarefas ou de compras, agendamento com médico/cabelereiro/etc.
+
+Pode utilizar a aplicação desenvolvida em sala como referência. A aplicação está disponível no repositório https://github.com/marcioaraya/api-crud-js, e o arquivo README.md tem orientações para "subir" a aplicação. 
+
+O código deve ser entregue em um repositório no Github (o repositório deve ser público ou, se for privado, deve incluir o meu usuário como participante do projeto).
+
+Na semana de avaliações, o grupo deverá apresentar a aplicação funcionando durante o horário da aula.
+
+Poderei fazer perguntas sobre o projeto.
+
+
+--- O que quero fazer: ---
+
+Lista de Tarefas (To-Do List).
+Tabela Principal: tarefas
+
+Colunas:
+id (chave primária)
+nome (texto)
+descricao (texto)
+data_criacao (data/hora)
+data_conclusao (data/hora - pode ser nula)
+status (texto - "pendente", "em andamento" ou "concluída")
+
+CRUD:
+Create: Adicionar uma nova tarefa.
+Read: Listar todas as tarefas.
+Update: Marcar uma tarefa como "pendente", "em andamento" ou "concluída" (ou editar a descrição).
+Delete: Excluir uma tarefa.

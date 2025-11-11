@@ -99,3 +99,99 @@ Servidor rodando na porta 3000
 Para acessar o frontend da aplicação, abra o navegador e digite:
 http://localhost:3000/
 
+## Como ligar o servidor (passo a passo)
+
+Se você tentou `npm run dev` e recebeu erro, normalmente é porque não existe um script `dev` definido em `package.json` neste projeto. As instruções abaixo mostram a forma que funcionou aqui e algumas opções para desenvolvimento com reload automático.
+
+1) Abra o PowerShell na pasta do projeto:
+
+```powershell
+cd "c:\Users\William Cesar\Desktop\Senac\1. Materias\3 Linguagem de Programação para Web I\Projeto\Projeto-J"
+```
+
+2) Instale dependências (apenas a primeira vez):
+
+```powershell
+npm install
+```
+
+3) Crie o arquivo de variáveis de ambiente a partir do modelo e edite-o (obrigatório):
+
+```powershell
+copy .env-modelo .env
+# abra o .env numa IDE ou com notepad e ajuste DB_HOST, DB_PORT, DB_USER, DB_PASSWORD e DB_NAME
+```
+
+Observação: remova espaços acidentais no final de valores (por exemplo em `DB_PASSWORD`) — espaços extras causam falha na conexão.
+
+4) Crie o database (se ainda não existir). Exemplo usando o cliente MySQL (substitua usuário/senha se necessário):
+
+```powershell
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS lista_tarefa;"
+```
+
+Ou crie pelo MySQL Workbench / phpMyAdmin se preferir interface gráfica.
+
+5) Rode as migrations para criar as tabelas (opcional se você importar o .sql):
+
+```powershell
+npx knex migrate:latest --knexfile knexfile.js
+```
+
+6) Rode os seeds para popular com exemplos:
+
+```powershell
+npx knex seed:run --knexfile knexfile.js
+```
+
+7) Inicie o servidor (modo normal):
+
+```powershell
+npm start
+```
+
+Isso executa `node src/server.js` (script `start` já configurado no `package.json`). O servidor deve abrir em `http://localhost:3000` por padrão.
+
+8) Iniciar em modo desenvolvimento com reload automático (opcional):
+
+Se quiser recarregar automaticamente ao editar arquivos, instale `nodemon` como dependência de desenvolvimento e use `npx nodemon` ou adicione um script `dev`:
+
+```powershell
+npm install --save-dev nodemon
+# iniciar com npx (sem alterar package.json):
+npx nodemon src/server.js
+
+# ou adicione no package.json um script "dev": "nodemon src/server.js" e então rodar:
+npm run dev
+```
+
+9) Testes rápidos (opcional)
+
+Existe um script de integração que sobe o servidor temporariamente numa porta livre, testa o fluxo CRUD e encerra:
+
+```powershell
+node scripts/integration-test.js
+```
+
+Se o comando acima falhar, verifique:
+- O MySQL está rodando (verifique painel XAMPP / Serviços do Windows / Workbench).
+- As variáveis em `.env` (host, porta, usuário, senha, database) estão corretas.
+- A porta 3000 não está sendo usada por outro processo (no Windows: `netstat -ano | findstr :3000`).
+
+Se você quiser que eu adicione um script `dev` diretamente ao `package.json` e instale `nodemon` automaticamente, posso fazer isso agora.
+
+## Observações sobre o schema de `tarefas`
+
+A tabela `tarefas` utilizada por esta aplicação contém os seguintes campos principais:
+
+- `id` (PK)
+- `nome` (texto) — obrigatório
+- `descricao` (texto)
+- `data_criacao` (date/datetime) — preenchido automaticamente ao criar a tarefa
+- `data_conclusao` (date/datetime) — preenchido automaticamente quando `status` é `concluida`
+- `status` (texto) — valores: `pendente`, `em andamento`, `concluida`
+
+O frontend exige que o campo `nome` seja preenchido ao criar uma nova tarefa. Mudar o `status` para `concluida` registra a data de conclusão automaticamente.
+
+Se o seu banco já possui uma tabela `tarefas` com outro esquema, revise os nomes e tipos das colunas antes de rodar as migrations/seeds inclusas.
+
