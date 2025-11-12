@@ -29,38 +29,21 @@ copy .env-modelo .env
 
 4) Crie o database (se necessário):
 
-```powershell
-mysql -u <usuario> -p -e "CREATE DATABASE IF NOT EXISTS lista_tarefa;"
-```
+- No MySQL execute o script "database-lista_tarefa.sql"
 
-5) Rode migrations e seeds (cria tabelas e insere exemplos):
-
-```powershell
-npx knex migrate:latest --knexfile knexfile.js
-npx knex seed:run --knexfile knexfile.js
-```
-
-6) Inicie o servidor:
+5) Inicie o servidor:
 
 ```powershell
 npm start
 ```
-
-Abra no navegador: http://localhost:3000
-
-Formato de datas
-- O frontend agora exibe apenas a data no formato `DD/MM/AAAA` (por exemplo: `24/11/2025`).
-- A hora foi removida da exibição porque podia aparecer como `00:00` dependendo do fuso/armazenamento; se preferir exibir hora também, posso reativar isso.
-- A data é formatada no navegador (fuso horário do cliente). Se preferir consistência entre clientes, podemos formatar no servidor.
-
-Modo desenvolvimento (reload automático)
-- Já existe um script `dev` no `package.json` usando `nodemon`. Para iniciar com reload automático:
-
+ou
 ```powershell
 npm run dev
 ```
 
-Teste rápido (opcional)
+Abra no navegador: http://localhost:3000
+
+Teste rápido
 - Para executar um teste end-to-end automático:
 
 ```powershell
@@ -72,13 +55,4 @@ Notas rápidas / solução de problemas
 - Remova espaços extras em valores do `.env` (ex.: `DB_PASSWORD`).
 - Se a porta 3000 estiver em uso, altere `PORT` no `.env`.
 
-Schema principal usado pela aplicação
-- `id` (PK)
-- `nome` (texto) — obrigatório
-- `descricao` (texto)
-- `data_criacao` (date/datetime)
-- `data_conclusao` (date/datetime)
-- `status` (texto) — `pendente`, `em andamento`, `concluida`
-
-Se quiser que eu simplifique ainda mais este README ou adicione instruções para deploy/GitHub, diga qual formato prefere.
-
+- Feito pelo aluno: William César da Silva Rodrigues
