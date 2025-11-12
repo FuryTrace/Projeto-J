@@ -29,7 +29,7 @@ copy .env-modelo .env
 
 4) Crie o database (se necessário):
 
-- No MySQL execute o script "database-lista_tarefa.sql"
+- No MySQL Workbench execute o script para criar o schema: "database-lista_tarefa.sql"
 
 5) Inicie o servidor:
 
@@ -54,5 +54,8 @@ Notas rápidas / solução de problemas
 - Verifique se o MySQL está rodando.
 - Remova espaços extras em valores do `.env` (ex.: `DB_PASSWORD`).
 - Se a porta 3000 estiver em uso, altere `PORT` no `.env`.
-____________________________________________________
-- Feito pelo aluno: William César da Silva Rodrigues
+_
+```powershell
+Feito pelo Grupo: 
+- William César da Silva Rodrigues
+```
