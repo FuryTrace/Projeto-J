@@ -54,5 +54,5 @@ Notas rápidas / solução de problemas
 - Verifique se o MySQL está rodando.
 - Remova espaços extras em valores do `.env` (ex.: `DB_PASSWORD`).
 - Se a porta 3000 estiver em uso, altere `PORT` no `.env`.
-
+- __________________________________________________
 - Feito pelo aluno: William César da Silva Rodrigues
