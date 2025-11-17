@@ -43,13 +43,6 @@ npm run dev
 
 Abra no navegador: http://localhost:3000
 
-Teste rápido
-- Para executar um teste end-to-end automático:
-
-```powershell
-node scripts/integration-test.js
-```
-
 Notas rápidas / solução de problemas
 - Verifique se o MySQL está rodando.
 - Remova espaços extras em valores do `.env` (ex.: `DB_PASSWORD`).

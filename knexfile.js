@@ -6,7 +6,7 @@ module.exports = {
   development: {
     client: 'mysql2',
     connection: {
-      // conexão com o banco MySQL (definida em .env)
+      // conexão com o banco MySQL
       host: process.env.DB_HOST,
       port: process.env.DB_PORT,
       user: process.env.DB_USER,

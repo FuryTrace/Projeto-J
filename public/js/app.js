@@ -1,6 +1,4 @@
 // Client-side JS que consome a API REST em /tarefas
-// Campos esperados no objeto tarefa retornado pela API:
-// { id, nome, descricao, data_criacao, data_conclusao, status }
 const apiBase = '/tarefas';
 
 // Wrapper para fetch que padroniza header JSON e tratamento de erro.
@@ -53,7 +51,6 @@ function formatDateTime(iso) {
 }
 
 // LISTAR: faz GET /tarefas
-// Espera array de tarefas; cada tarefa deve conter os campos acima.
 async function listar() {
   try {
   const tarefas = await apiFetch(apiBase);
@@ -71,9 +68,7 @@ async function listar() {
       const criadoText = formatDateTime(t.data_criacao);
       const concluidoText = t.data_conclusao ? formatDateTime(t.data_conclusao) : null;
 
-      // Renderiza a data de criação (apenas DD/MM/AAAA). Somente mostra data_conclusao
-      // quando status === 'concluida'. Estilizamos com classes para permitir ajustes
-      // no CSS (.meta, .meta-date, .meta-concluded).
+      // Renderiza a data de criação (apenas DD/MM/AAAA). Somente mostra data_conclusao quando status === 'concluida'.
       const meta = createElem('div', null, 'meta');
       const criadoDateEl = createElem('small', `Criado: ${criadoText}`, 'meta-date');
       meta.appendChild(criadoDateEl);

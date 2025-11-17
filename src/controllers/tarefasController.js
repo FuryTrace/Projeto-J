@@ -14,13 +14,13 @@ function handleError(res, err, message = 'Erro interno', code = 500) {
 }
 
 // LISTAR: retorna array de tarefas
-// Consulta realizada: SELECT id,nome,descricao,data_criacao,data_conclusao,status FROM tarefas ORDER BY id
+// Consulta realizada
 exports.listar = async (req, res) => {
   try {
     const tarefas = await db('tarefas')
       .select('id', 'nome', 'descricao', 'data_criacao', 'data_conclusao', 'status')
       .orderBy('id', 'asc');
-    // Resposta JSON enviada para o frontend (public/js/app.js espera estes campos)
+    // Resposta JSON enviada para o frontend
     res.json(tarefas);
   } catch (err) {
     handleError(res, err, 'Erro ao listar tarefas');
@@ -28,7 +28,7 @@ exports.listar = async (req, res) => {
 };
 
 // OBTER: retorna 1 tarefa pelo id
-// Consulta: SELECT * FROM tarefas WHERE id = :id LIMIT 1
+// Consulta
 exports.obter = async (req, res) => {
   try {
     const tarefa = await db('tarefas').where({ id: req.params.id }).first();
@@ -40,7 +40,6 @@ exports.obter = async (req, res) => {
 };
 
 // INSERIR: cria nova tarefa
-// Espera no body: { nome: string (obrigatorio), descricao?: string }
 // Insere: nome, descricao, data_criacao (hoje), data_conclusao null, status 'pendente'
 exports.inserir = async (req, res) => {
   try {
@@ -51,9 +50,9 @@ exports.inserir = async (req, res) => {
 
     const data_criacao = todayDate();
     const status = 'pendente';
-    // INSERT INTO tarefas (...) VALUES (...)
+    // INSERT INTO tarefas, VALUES
     const [id] = await db('tarefas').insert({ nome: nome || null, descricao: descricao || null, data_criacao, data_conclusao: null, status });
-    // Retornamos o id criado (frontend e testes usam isso)
+    // Retornamos o id criado
     res.status(201).json({ id, mensagem: 'Tarefa inserida com sucesso' });
   } catch (err) {
     handleError(res, err, 'Erro ao inserir tarefa');
@@ -88,7 +87,7 @@ exports.atualizar = async (req, res) => {
       }
     }
 
-    // UPDATE tarefas SET ... WHERE id = :id
+    // UPDATE tarefas
     await db('tarefas').where({ id }).update(updateData);
     res.json({ mensagem: 'Tarefa atualizada com sucesso' });
   } catch (err) {

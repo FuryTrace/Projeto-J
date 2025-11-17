@@ -1,6 +1,5 @@
 // knex wrapper: cria e exporta a instância do Knex usada em todo o projeto
-// Ele lê as configurações a partir do arquivo raiz `knexfile.js` (que por sua
-// vez usa variáveis de ambiente em `.env`).
+// Ele lê as configurações a partir do arquivo raiz `knexfile.js`.
 const knex = require('knex');
 const config = require('../../knexfile');
 

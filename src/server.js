@@ -1,4 +1,4 @@
-// Carrega variáveis de ambiente de .env (host/porta do DB, PORT do servidor)
+// Carrega variáveis de ambiente de .env
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -7,20 +7,17 @@ const path = require('path');
 function createApp() {
 	const app = express();
 	// Servir arquivos estáticos (frontend) da pasta public
-	// => ao acessar http://localhost:PORT/ o arquivo public/index.html é servido
 	app.use(express.static(path.join(__dirname, '..', 'public')));
 
-	// Middleware para parse JSON em requisições (req.body)
+	// Middleware para parse JSON em requisições
 	app.use(express.json());
 
-	// Rotas API para /tarefas (veja src/routes/tarefas.js)
+	// Rotas API para /tarefas (src/routes/tarefas.js)
 	// Essas rotas delegam a lógica para src/controllers/tarefasController.js
 	const tarefasRoutes = require('./routes/tarefas');
 	app.use('/tarefas', tarefasRoutes);
 
-	// Rota raiz que envia o index.html (opcional, já coberto pelo static)
-	// Nota: não é necessário definir explicitamente a rota '/' aqui,
-	// pois `express.static` já serve `public/index.html` na raiz.
+	// Rota raiz que envia o index.html
 
 	return app;
 }
@@ -35,7 +32,6 @@ function startServer(port = process.env.PORT || 3000) {
 }
 
 // Se o arquivo for executado diretamente (node src/server.js), inicia o servidor.
-// Exportamos também createApp/startServer para permitir testes programáticos.
 if (require.main === module) {
 	startServer();
 }
