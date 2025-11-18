@@ -54,25 +54,6 @@ npm run dev    # desenvolvimento
 npm run start  # produção
 ```
 
-Endpoints principais
-- `GET /api/tarefas`
-- `GET /api/tarefas/:id`
-- `POST /api/tarefas`
-- `PUT /api/tarefas/:id`
-- `DELETE /api/tarefas/:id`
-
-Estrutura (resumida)
-- `public/` (frontend)
-- `src/` (server, controllers, routes, db)
-- `banco-de-dados/boizinho.sql`
-
-Comando Git sugerido
-```powershell
-git add README.md
-git commit -m "docs: resumo do README"
-git push
-```
-
 ---
 
 Feito por: William Cesar da Silva Rodrigues
