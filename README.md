@@ -32,27 +32,11 @@ mysql -u <usuario> -p < Projeto-J\banco-de-dados\boizinho.sql
 ```powershell
 npm run start
 ```
+
 - Em desenvolvimento (com reinício automático):
-# Projeto: CadastroDeBoi (Projeto-J) — Resumo
-
-Breve: API Node (Express + Knex) com frontend estático para gerenciar a tabela `animais`.
-
-Rápido (setup mínimo)
-- Crie/copien `.env` e configure: `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `PORT`.
-- Instale dependências:
-```powershell
-cd Projeto-J
-npm install
-```
-- Crie o DB (script):
-```powershell
-mysql -u <usuario> -p < banco-de-dados\boizinho.sql
-```
-- Inicie o servidor:
-```powershell
-npm run dev    # desenvolvimento
-npm run start  # produção
-```
+´´´powershell
+npm run dev
+´´´
 
 ---
 
