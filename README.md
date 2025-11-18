@@ -34,9 +34,9 @@ npm run start
 ```
 
 - Em desenvolvimento (com reinício automático):
-´´´powershell
+```powershell
 npm run dev
-´´´
+```
 
 ---
 
