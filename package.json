@@ -1,13 +1,11 @@
 {
-  "name": "projeto-j",
+  "name": "cadastrodeboi",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "migrate": "npx knex migrate:latest --knexfile knexfile.js",
-    "seed": "npx knex seed:run --knexfile knexfile.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

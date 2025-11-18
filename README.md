@@ -1,54 +1,78 @@
-# Projeto: Lista de Tarefas (backend Node + frontend estático)
 
-Resumo rápido
-Este projeto fornece uma API REST (Node/Express/Knex/MySQL) para gerenciar uma tabela `tarefas` e um frontend simples em `public/` que consome a API.
+**Projeto: CadastroDeBoi (diretório: `Projeto-J`)**
 
-Requisitos mínimos
+**Visão rápida**
+Instruções para configurar e executar o projeto localmente (Node + Express + Knex + MySQL).
+
+**Pré-requisitos**
 - Node.js (recomendo LTS)
 - MySQL ou MariaDB
 
-Passos essenciais para rodar (PowerShell)
-1) Abra o terminal na pasta do projeto:
+**1) Ajustar variáveis de ambiente**
+- Abra o arquivo `Projeto-J\.env` e verifique as variáveis: `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `PORT`.
+- Remova espaços acidentais (ex.: espaço no final da senha).
 
+**2) Instalar dependências (PowerShell)**
 ```powershell
 cd Projeto-J
-```
-
-2) Instale dependências:
-
-```powershell
 npm install
 ```
 
-3) Crie o arquivo de ambiente e edite com suas credenciais:
-
+**3) Criar banco de dados e tabelas**
+- O script SQL está em `Projeto-J\banco-de-dados\boizinho.sql`.
+- Exemplo usando cliente MySQL (execute no PowerShell):
 ```powershell
-copy .env-modelo .env
-# Edite .env (DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME)
+mysql -u <usuario> -p < Projeto-J\banco-de-dados\boizinho.sql
+```
+- Isso criará o schema `boizinho` e a tabela `animais`.
+- Ou use o MySQL Workbench ou outro cliente para rodar o script.
+
+**4) Rodar o servidor**
+- Em produção:
+```powershell
+npm run start
+```
+- Em desenvolvimento (com reinício automático):
+# Projeto: CadastroDeBoi (Projeto-J) — Resumo
+
+Breve: API Node (Express + Knex) com frontend estático para gerenciar a tabela `animais`.
+
+Rápido (setup mínimo)
+- Crie/copien `.env` e configure: `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `PORT`.
+- Instale dependências:
+```powershell
+cd Projeto-J
+npm install
+```
+- Crie o DB (script):
+```powershell
+mysql -u <usuario> -p < banco-de-dados\boizinho.sql
+```
+- Inicie o servidor:
+```powershell
+npm run dev    # desenvolvimento
+npm run start  # produção
 ```
 
-4) Crie o database (se necessário):
+Endpoints principais
+- `GET /api/tarefas`
+- `GET /api/tarefas/:id`
+- `POST /api/tarefas`
+- `PUT /api/tarefas/:id`
+- `DELETE /api/tarefas/:id`
 
-- No MySQL Workbench execute o script para criar o schema: "database-lista_tarefa.sql"
+Estrutura (resumida)
+- `public/` (frontend)
+- `src/` (server, controllers, routes, db)
+- `banco-de-dados/boizinho.sql`
 
-5) Inicie o servidor:
-
+Comando Git sugerido
 ```powershell
-npm start
-```
-ou
-```powershell
-npm run dev
+git add README.md
+git commit -m "docs: resumo do README"
+git push
 ```
 
-Abra no navegador: http://localhost:3000
+---
 
-Notas rápidas / solução de problemas
-- Verifique se o MySQL está rodando.
-- Remova espaços extras em valores do `.env` (ex.: `DB_PASSWORD`).
-- Se a porta 3000 estiver em uso, altere `PORT` no `.env`.
-_
-```powershell
-Feito pelo Grupo: 
-- William César da Silva Rodrigues
-```
+Feito por: William Cesar da Silva Rodrigues

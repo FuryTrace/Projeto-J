@@ -1,39 +1,36 @@
-// Carrega variáveis de ambiente de .env
+/**
+ * Entry point do servidor Express para o projeto "CadastroDeBoi".
+ * - Configura middlewares básicos (JSON, urlencoded)
+ * - Monta rotas da API em `/api/tarefas`
+ * - Serve o frontend estático em `/public`
+ * - Expõe um health-check em `/health`
+ *
+ * Executar em desenvolvimento: `npm run dev` (nodemon)
+ */
+const path = require('path');
 require('dotenv').config();
 const express = require('express');
-const path = require('path');
 
-// Cria o app Express com middleware e rotas
-function createApp() {
-	const app = express();
-	// Servir arquivos estáticos (frontend) da pasta public
-	app.use(express.static(path.join(__dirname, '..', 'public')));
+const app = express();
 
-	// Middleware para parse JSON em requisições
-	app.use(express.json());
+// Middlewares para parse do body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-	// Rotas API para /tarefas (src/routes/tarefas.js)
-	// Essas rotas delegam a lógica para src/controllers/tarefasController.js
-	const tarefasRoutes = require('./routes/tarefas');
-	app.use('/tarefas', tarefasRoutes);
+// Rotas da API (CRUD para a entidade 'animais')
+const cadastroRouter = require('./routes/cadastro');
+app.use('/api/tarefas', cadastroRouter);
 
-	// Rota raiz que envia o index.html
+// Servir arquivos estáticos (frontend simples dentro de /public)
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
-	return app;
-}
+// Endpoint simples para verificar se o servidor está vivo
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
-// Inicia o servidor na porta informada em .env (PORT) ou 3000
-function startServer(port = process.env.PORT || 3000) {
-	const app = createApp();
-	const server = app.listen(port, () => {
-		console.log(`Servidor rodando na porta ${port}`);
-	});
-	return server;
-}
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+	console.log(`Servidor iniciado na porta ${PORT}`);
+});
 
-// Se o arquivo for executado diretamente (node src/server.js), inicia o servidor.
-if (require.main === module) {
-	startServer();
-}
-
-module.exports = { createApp, startServer };
+// Exporta a instância do app para permitir testes ou uso externo
+module.exports = app;

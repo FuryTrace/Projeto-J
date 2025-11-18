@@ -1,222 +1,117 @@
-/* Paleta de cores */
-:root {
-  --pastel-purple: #d4c5f9;
-  --pastel-blue: #b8e0ff;
-  --pastel-pink: #ffd6e8;
-  --pastel-mint: #c8f0d5;
-  --pastel-peach: #ffd7ba;
-  --pastel-lavender: #e5d9f2;
-  --bg-main: #f8f4ff;
-  --bg-container: #ffffff;
-  --text-dark: #5a4f7b;
-  --text-light: #8b7da8;
-  --border-light: #e9e0f7;
-  --success: #7ec699;
-  --shadow: rgba(155, 126, 189, 0.1);
+/* --------------------------- Font --------------------------- */
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url("../font/Ubuntu-M.ttf") format("truetype");
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, var(--bg-main) 0%, #f0e8ff 100%);
-  margin: 0;
-  padding: 20px;
-  min-height: 100vh;
+/* --------------------------- Header --------------------------- */
+
+#nav {
+    width: 100%;
+    height: 15vh;
+    background-color: blueviolet;
+    color: white;
+    font-size: 2em;
+    font-family: Ubuntu;
+    text-align: center;
+    line-height: 14vh;
 }
 
-.container {
-  max-width: 700px;
-  margin: 20px auto;
-  background: var(--bg-container);
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px var(--shadow);
-  backdrop-filter: blur(10px);
+/* --------------------------- Form --------------------------- */
+
+#input-data {
+    width: 90vw;
+    max-width: 1200px;
+    font-family: Ubuntu;
+    margin: 0 auto;
+    margin-top: 5vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
+    align-items: start;
 }
 
-h1 {
-  margin-top: 0;
-  color: var(--text-dark);
-  font-size: 2rem;
-  font-weight: 600;
-  background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.input-text {
+    width: 100%;
+    height: 35px;
+    padding-left: 5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #262626;
+    transition: 0.25s;
+    outline: none;
+    box-sizing: border-box;
 }
 
-/* formulário */
-#form-adicionar {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 24px;
-  padding: 20px;
-  background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-blue));
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(155, 126, 189, 0.15);
+.input-text:focus{
+    border-color: blueviolet;
 }
 
-#form-adicionar input {
-  flex: 1;
-  padding: 12px 16px;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  background: white;
-  color: var(--text-dark);
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
+.input-btn {
+    height: 39px;
+    min-width: 120px;
+    padding: 0 15px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #262626;
+    cursor: pointer;
+    transition: 0.3s all ease;
 }
 
-#form-adicionar input:focus {
-  outline: none;
-  border-color: var(--pastel-purple);
-  box-shadow: 0 0 0 3px rgba(212, 197, 249, 0.3);
+.input-btn:hover {
+    background-color: #383838;
+    border-color: #383838;
+    color: white;
 }
 
-#form-adicionar button {
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: none;
-  background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-peach));
-  color: var(--text-dark);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(255, 214, 232, 0.4);
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
 }
 
-#form-adicionar button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 214, 232, 0.6);
+/* --------------------------- Table --------------------------- */
+
+#myTable {
+    font-family: Ubuntu;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 5vh;
+    border-collapse: collapse;
 }
 
-#form-adicionar button:active {
-  transform: translateY(0);
+#myTable th {
+    background-color: blueviolet;
+    padding: 10px;
+    color: white;
+    font-weight: 100;
 }
 
-/* lista */
-ul#lista {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+#myTable td, th{
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
-ul#lista li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px;
-  border-bottom: 1px solid var(--border-light);
-  border-radius: 8px;
-  margin-bottom: 8px;
-  background: linear-gradient(to right, rgba(232, 225, 255, 0.3), rgba(255, 255, 255, 0));
-  transition: all 0.3s ease;
+#myTable td{
+    padding: 5px;
 }
 
-ul#lista li:hover {
-  background: linear-gradient(to right, rgba(232, 225, 255, 0.5), rgba(255, 255, 255, 0.2));
-  transform: translateX(4px);
+#myTable tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.info {
-  flex: 1;
-  min-width: 0;
+#myTable tr:hover {
+    background-color: #ddd;
 }
 
-.info strong {
-  display: block;
-  color: var(--text-dark);
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.descricao {
-  margin-top: 6px;
-  color: var(--text-light);
-  line-height: 1.5;
-}
-
-.meta {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  color: var(--text-light);
-  font-size: 0.85rem;
-  margin-top: 8px;
-}
-
-.meta-date {
-  color: var(--text-dark);
-  background: var(--pastel-mint);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-}
-
-.meta-sep {
-  color: var(--border-light);
-  margin: 0 4px;
-}
-
-.meta-concluded {
-  color: var(--success);
-  background: rgba(126, 198, 153, 0.2);
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: 500;
-}
-
-/* ações (select e botões) */
-.actions {
-  margin-left: auto;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.actions select {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 2px solid var(--border-light);
-  background: white;
-  color: var(--text-dark);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.actions select:hover {
-  border-color: var(--pastel-purple);
-}
-
-.actions select:focus {
-  outline: none;
-  border-color: var(--pastel-purple);
-  box-shadow: 0 0 0 3px rgba(212, 197, 249, 0.3);
-}
-
-.actions button {
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-  background: linear-gradient(135deg, var(--pastel-peach), var(--pastel-pink));
-  color: var(--text-dark);
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(255, 215, 186, 0.4);
-}
-
-.actions button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(255, 215, 186, 0.6);
-}
-
-.actions button:active {
-  transform: translateY(0);
-}
-
-span.concluida {
-  text-decoration: line-through;
-  color: #b5a8c4;
-  opacity: 0.7;
+.remove-btn{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-width: 0px;
+    background-color: transparent;
+    cursor: pointer;
 }

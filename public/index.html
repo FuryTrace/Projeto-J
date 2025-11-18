@@ -1,27 +1,47 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Lista de Tarefas</title>
-  <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8" />
+    <title>Fill JS table CSM</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="text/javascript" src="./js/script.js"></script>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Lista de Tarefas</h1>
-
-    <!-- Formulário para criar tarefa. O backend exige 'nome' não-nulo. -->
-    <form id="form-adicionar">
-      <!-- 'nome' aparece na tabela como campo obrigatório -->
-      <input id="nome" placeholder="Nome (obrigatório)" autocomplete="off">
-      <!-- 'descricao' é opcional -->
-      <input id="descricao" placeholder="Descrição da tarefa" autocomplete="off">
-      <button type="submit">Adicionar</button>
-    </form>
-
-    <ul id="lista"></ul>
-  </div>
-
-  <script src="/js/app.js"></script>
+    <div id="nav">
+        Cadastro de Bois
+    </div>
+    <section id="table">
+        <form method="POST">
+            <div id="input-data">
+                <input id="codigo_lacre" class="input-text" placeholder="Código do Lacre" type="text" required />
+                <input id="nome_animal" class="input-text" placeholder="Nome do Animal" type="text" required />
+                <input id="codigo_registro" class="input-text" placeholder="Código de Registro" type="text" required />
+                <input id="codigo_registro_pai" class="input-text" placeholder="Código de Registro do Pai" type="text" />
+                <input id="codigo_registro_mae" class="input-text" placeholder="Código de Registro da Mãe" type="text" />
+                <input id="peso_inicial" class="input-text" placeholder="Peso Inicial" type="text" inputmode="decimal" />
+                <input id="data_nascimento" class="input-text" placeholder="Data de Nascimento" type="date" />
+                <div style="grid-column: 1 / -1; display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                    <input id="submit-btn" class="input-btn" type="submit" value="Enviar" />
+                    <button id="cancel-btn" type="button" class="input-btn" style="display:none;">Cancelar</button>
+                </div>
+            </div>
+        </form>
+        <table id="myTable">
+            <tr id="0">
+                <th>Código do Lacre</th>
+                <th>Nome do Animal</th>
+                <th>Código de Registro</th>
+                <th>Código de Registro do Pai</th>
+                <th>Código de Registro da Mãe</th>
+                <th>Peso Inicial</th>
+                <th>Data de Nascimento</th>
+                <th>Ações</th>
+            </tr>
+        </table>
+    </section>
 </body>
+
 </html>

@@ -1,0 +1,37 @@
+Instruções rápidas para rodar o projeto `CadastroDeBoi`
+
+1) Ajustar variáveis de ambiente
+	- Abra o arquivo `CadastroDeBoi\.env` e verifique as variáveis:
+	  DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME, PORT
+	- Remova espaços acidentais (não deixar espaço no final da senha, aconteceu comigo).
+
+2) Instalar dependências (PowerShell)
+	cd CadastroDeBoi
+	npm install
+
+3) Criar banco de dados e tabelas
+	- O script SQL está em `CadastroDeBoi\banco-de-dados\boizinho.sql`.
+	- Exemplo usando cliente MySQL (execute no PowerShell):
+	  mysql -u <usuario> -p < CadastroDeBoi\banco-de-dados\boizinho.sql
+	- Isso criará o schema `boizinho` e a tabela `animais`.
+	- Ou use o MySQL Workbench ou outro cliente para rodar o script.
+
+4) Rodar o servidor
+	- Iniciar em modo produção:
+	  npm run start
+	- Iniciar em modo desenvolvimento (com reinício automático):
+	  npm run dev
+	- Por padrão o servidor usa a porta definida em `.env` (ex: 3000).
+
+5) Testar API e frontend
+	- Frontend estático: abra `http://localhost:3000/` no navegador.
+	- Endpoints da API (exemplos):
+	  GET  /api/tarefas        -> lista animais
+	  GET  /api/tarefas/:id    -> obter animal por id
+	  POST /api/tarefas        -> inserir animal (JSON no body)
+	  PUT  /api/tarefas/:id    -> atualizar animal
+	  DELETE /api/tarefas/:id  -> remover animal
+
+6) Observações
+	- O arquivo `CadastroDeBoi\knexfile.js` já usa as variáveis em `.env`.
+	- Caso ocorra erro de conexão, verifique se o serviço MySQL está rodando e as credenciais.
