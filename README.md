@@ -44,7 +44,6 @@ npm run start
 
 **Observações importantes**
 - O frontend está dentro da pasta `public` e o servidor serve os arquivos estáticos. A interface consome a API em `/api/tarefas`.
-- Caso o repositório seja entregue como privado, adicione o professor como colaborador conforme solicitado nas instruções da disciplina.
 
 ---
 
